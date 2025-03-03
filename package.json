@@ -1,0 +1,32 @@
+{
+  "devDependencies": {
+    "@types/pg": "^8.11.11",
+    "@types/proj4": "^2.5.6",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "prettier": "^3.5.2",
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "ol": "^10.4.0",
+    "pg": "^8.13.3",
+    "proj4": "^2.15.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "test": "tsc --noEmit && prettier --check .",
+    "dev": "vite",
+    "prepare": "husky",
+    "db:fireStation": "npm run db:firestation:download && npm run db:fireStation:import",
+    "db:fireSatation:download": "download --extract --out tmp https://nedlasting.geonorge.no/geonorge/Samfunnssikkerhet/Brannstasjoner/PostGIS/Samfunnssikkerhet_0000_Norge_25833_Brannstasjoner_PostGIS.zip",
+    "db:fireStation:import": "docker exec -i /postgis /usr/bin/psql --user postgres < tmp/Samfunnssikkerhet_0000_Norge_25833_Brannstasjoner_PostGIS.sql",
+    "postinstall": "cd server && npm install",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arbeidskrav"
+  }
+}
