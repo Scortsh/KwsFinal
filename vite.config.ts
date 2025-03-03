@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    base: "/arbeidskrav",
+    base: "/KwsFinal",
     server: {
         proxy: {
-            "/arbeidskrav/api": "http://localhost:3000",
+            "/KwsFinal/api": "http://localhost:3000",
         },
     },
 });
