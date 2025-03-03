@@ -15,20 +15,20 @@ useGeographic();
 const osmLayer = new TileLayer({ source: new OSM() });
 const civilDefenseLayer = new VectorLayer({
     source: new VectorSource({
-        url: "/arbeidskrav/geojson/Sivilforsvarsdistrikter.geojson",
+        url: "/public/geojson/Sivilforsvarsdistrikter.geojson",
         format: new GeoJSON(),
     }),
 });
-const fireStationLayer = new VectorLayer({
+const shelterLayer = new VectorLayer({
     source: new VectorSource({
-        url: "/arbeidskrav/api/brannstasjoner",
+        url: "/public/geojson/tilfluktsrom.geojson",
         format: new GeoJSON(),
     }),
 });
 
 const map = new Map({
     view: new View({ center: [10.8, 59.9], zoom: 8 }),
-    layers: [osmLayer, civilDefenseLayer, fireStationLayer],
+    layers: [osmLayer, civilDefenseLayer, shelterLayer],
 
 });
 
@@ -49,7 +49,7 @@ const hoverStyle = new Style({
 });
 
 const vectorLayer = new VectorLayer({
-    source: fireStationLayer.getSource() ?? undefined,
+    source: shelterLayer.getSource() ?? undefined,
     style: (feature) => feature.get('hover') ? hoverStyle : defaultStyle,
 });
 
