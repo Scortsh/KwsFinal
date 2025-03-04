@@ -1,14 +1,24 @@
-.popup {
-    position: absolute;
+.shelter-info {
     background: white;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    display: none;
-    pointer-events: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 15px;
+    min-width: 280px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.ol-map-container:hover {
+.shelter-info h3 {
+    margin-top: 0;
+}
+
+.shelter-info .close-btn {
+    float: right;
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+.shelter-info .close-btn:hover {
+    background: #e0e0e0;
 }
