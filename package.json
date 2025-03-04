@@ -19,7 +19,7 @@
     "test": "tsc --noEmit && prettier --check .",
     "dev": "vite",
     "prepare": "husky",
-    "db:fireStation:import": "docker exec -i /postgis /usr/bin/psql --user postgres < tmp/Befolkning_0000_Norge_25833_Videregaendeskoler_PostGIS.sql",
+    "db:schools:import": "docker exec -i /postgis /usr/bin/psql --user postgres < tmp/Befolkning_0000_Norge_25833_Videregaendeskoler_PostGIS.sql",
     "build": "vite build"
   },
   "repository": {
