@@ -121,9 +121,9 @@ export function Application() {
             if (feature) {
                 const properties = feature.getProperties();
                 const info = `
-                    <h3>${properties.name || 'Unnamed Shelter'}</h3>
-                    <p>Capacity: ${properties.capacity || 'Unknown'}</p>
-                    <p>Type: ${properties.type || 'Unspecified'}</p>
+                    <h3>Shelter Nr: ${properties.romnr || ''}</h3>
+                    <p>Capacity: ${properties.plasser || ''}</p>
+                    <p>Area/Address: ${properties.adresse || ''}</p>
                 `;
                 setOverlayInfo(info);
                 overlay.setPosition(e.coordinate);
