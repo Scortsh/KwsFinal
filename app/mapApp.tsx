@@ -56,17 +56,17 @@ const defaultStyle = new Style({
         color: 'rgba(0, 0, 255, 0.1)'
     }),
     stroke: new Stroke({
-        color: 'blue',
+        color: 'rgba(225,89,54,0.3)',
         width: 5
     })
 });
 
 const highlightStyle = new Style({
     fill: new Fill({
-        color: 'rgba(150, 25, 0, 0.3)'
+        color: 'rgba(161,142,137,0.3)'
     }),
     stroke: new Stroke({
-        color: 'blue',
+        color: 'rgba(225,89,54,0.3)',
         width: 5
     })
 });
