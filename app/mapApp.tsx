@@ -11,7 +11,7 @@ import "ol/ol.css";
 
 useGeographic();
 
-const osmLayer = new TileLayer({ source: new OSM()});
+const osmLayer = new TileLayer({ source: new OSM() });
 
 const shelterLayer = new VectorLayer({
     source: new VectorSource({
@@ -32,24 +32,36 @@ const shelterLayer = new VectorLayer({
     })
 });
 
+const defaultStyle = new Style({
+    fill: new Fill({
+        color: 'rgba(0, 0, 255, 0.1)'
+    }),
+    stroke: new Stroke({
+        color: 'blue',
+        width: 5
+    })
+});
+
+const highlightStyle = new Style({
+    fill: new Fill({
+        color: 'rgba(255, 255, 0, 0.3)'
+    }),
+    stroke: new Stroke({
+        color: 'yellow',
+        width: 5
+    })
+});
+
 const sivilforsvarsdistrikterLayer = new VectorLayer({
     source: new VectorSource({
         url: "/geojson/Sivilforsvarsdistrikter.geojson",
         format: new GeoJSON(),
     }),
-    style: new Style({
-        fill: new Fill({
-            color: 'rgba(0, 0, 255, 0.1)'
-        }),
-        stroke: new Stroke({
-            color: 'blue',
-            width: 5
-        })
-    })
+    style: defaultStyle
 });
 
 const map = new Map({
-    view: new View({ center: [10.8, 59.9], zoom: 12 }),
+    view: new View({ center: [10.8, 59.9], zoom: 10 }),
     layers: [
         new TileLayer({ source: new OSM() }),
         osmLayer, shelterLayer, sivilforsvarsdistrikterLayer
@@ -61,6 +73,26 @@ export function Application() {
 
     useEffect(() => {
         map.setTarget(mapRef.current!);
+
+        let hoveredFeature: any = null;
+
+        map.on('pointermove', function(e) {
+            if (hoveredFeature) {
+                hoveredFeature.setStyle(defaultStyle);
+                hoveredFeature = null;
+            }
+
+            map.forEachFeatureAtPixel(e.pixel, function(feature, layer) {
+                if (layer === sivilforsvarsdistrikterLayer) {
+                    hoveredFeature = feature;
+                    feature.setStyle(highlightStyle);
+                    return true;
+                }
+            });
+
+            map.getTargetElement().style.cursor = hoveredFeature ? 'pointer' : '';
+        });
+
     }, []);
 
     return <div ref={mapRef}></div>;
