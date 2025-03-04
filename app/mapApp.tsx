@@ -15,16 +15,9 @@ const osmLayer = new TileLayer({ source: new OSM()});
 
 const shelterLayer = new VectorLayer({
     source: new VectorSource({
-        url: "/api/skoler",
+        url: "./KwsFinal/api/skoler",
         format: new GeoJSON(),
     }),
-    style: new Style({
-        image: new Circle({
-            radius: 5,
-            fill: new Fill({ color: 'red' }),
-            stroke: new Stroke({ color: 'white', width: 1 })
-        })
-    })
 });
 
 const sivilforsvarsdistrikerLayer = new VectorLayer({
