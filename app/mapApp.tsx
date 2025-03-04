@@ -18,11 +18,23 @@ const shelterLayer = new VectorLayer({
         url: "./KwsFinal/api/skoler",
         format: new GeoJSON(),
     }),
+    style: new Style({
+        image: new Circle({
+            radius: 6,
+            fill: new Fill({
+                color: 'rgba(255, 0, 0, 0.7)'
+            }),
+            stroke: new Stroke({
+                color: '#fff',
+                width: 2
+            })
+        })
+    })
 });
 
-const sivilforsvarsdistrikerLayer = new VectorLayer({
+const sivilforsvarsdistrikterLayer = new VectorLayer({
     source: new VectorSource({
-        url: "./geojson/Sivilforsvarsdistrikter.geojson",
+        url: "/geojson/Sivilforsvarsdistrikter.geojson",
         format: new GeoJSON(),
     }),
     style: new Style({
@@ -40,7 +52,7 @@ const map = new Map({
     view: new View({ center: [10.8, 59.9], zoom: 12 }),
     layers: [
         new TileLayer({ source: new OSM() }),
-        osmLayer, shelterLayer, sivilforsvarsdistrikerLayer
+        osmLayer, shelterLayer, sivilforsvarsdistrikterLayer
     ],
 });
 

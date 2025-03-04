@@ -4,7 +4,7 @@ export default defineConfig({
     base: "./KwsFinal",
     server: {
         proxy: {
-            "./KwsFinal": "http://localhost:3000",
+            "./KwsFinal/api": "http://localhost:3000",
         },
     },
 });
