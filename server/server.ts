@@ -1,3 +1,4 @@
+//This was another approach to the assignment using database
 import {Hono} from "hono";
 import {serve} from "@hono/node-server";
 import pg from "pg";
