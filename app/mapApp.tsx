@@ -15,7 +15,7 @@ const osmLayer = new TileLayer({ source: new OSM()});
 
 const shelterLayer = new VectorLayer({
     source: new VectorSource({
-        url: "./geojson/shelter.geojson",
+        url: "/api/skoler",
         format: new GeoJSON(),
     }),
     style: new Style({
