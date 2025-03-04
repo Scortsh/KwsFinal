@@ -12,7 +12,7 @@ import "ol/ol.css";
 useGeographic();
 
 const osmLayer = new TileLayer({ source: new OSM()});
-//Layers vil ikke dukke opp uansett path som blir tilgitt.
+
 const shelterLayer = new VectorLayer({
     source: new VectorSource({
         url: "./geojson/shelter.geojson",
