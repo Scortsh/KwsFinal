@@ -19,19 +19,37 @@ const shelterLayer = new VectorLayer({
         url: "/geojson/shelter.geojson",
         format: new GeoJSON(),
     }),
-    style: new Style({
-        image: new Circle({
-            radius: 6,
-            fill: new Fill({
-                color: 'rgba(255, 0, 0, 0.7)'
-            }),
-            stroke: new Stroke({
-                color: '#fff',
-                width: 2
+    style: function(feature) {
+        const capacity = feature.get('plasser');
+        let color;
+        let radius;
+
+        if (capacity <= 100) {
+            color = 'rgba(255, 0, 0, 0.7)';
+            radius = 4;
+        } else if (capacity <= 500) {
+            color = 'rgba(255, 165, 0, 0.7)';
+            radius = 6;
+        } else {
+            color = 'rgba(0, 255, 0, 0.7)';
+            radius = 8;
+        }
+
+        return new Style({
+            image: new Circle({
+                radius: radius,
+                fill: new Fill({
+                    color: color
+                }),
+                stroke: new Stroke({
+                    color: '#fff',
+                    width: 2
+                })
             })
-        })
-    })
+        });
+    }
 });
+
 
 const defaultStyle = new Style({
     fill: new Fill({
@@ -45,10 +63,10 @@ const defaultStyle = new Style({
 
 const highlightStyle = new Style({
     fill: new Fill({
-        color: 'rgba(255, 255, 0, 0.3)'
+        color: 'rgba(150, 25, 0, 0.3)'
     }),
     stroke: new Stroke({
-        color: 'yellow',
+        color: 'blue',
         width: 5
     })
 });
