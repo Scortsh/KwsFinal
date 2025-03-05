@@ -71,7 +71,7 @@ const highlightStyle = new Style({
     })
 });
 
-const sivilforsvarsdistrikterLayer = new VectorLayer({    /** The hover over effect on the sivilforsvarsdistrikterLayer we added a great touch. 
+const sivilforsvarsdistrikterLayer = new VectorLayer({    /** The Hover over effect on the sivilforsvarsdistrikterLayer we added a great touch. 
 It makes it clear which areas are being highlighted, and the cursor change adds to the user experience. **/
     source: new VectorSource({
         url: "/geojson/Sivilforsvarsdistrikter.geojson",
